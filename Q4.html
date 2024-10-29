@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4e54c8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #434190;
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="confirmName()">Confirm Name</button>
+
+<script>
+    function confirmName() {
+        let name = prompt("Please enter your name:"); // Prompt the user to enter their name
+        if (name) {
+            alert("Your name is: " + name); // Display the name in a popup box
+        } else {
+            alert("No name entered."); // Handle case when no name is entered
+        }
+    }
+</script>
+
+</body>
+</html>

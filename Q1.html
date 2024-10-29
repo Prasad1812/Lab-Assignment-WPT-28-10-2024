@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0; /* Light gray background */
+            font-size: 16px;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+            background: #ffffff; /* White background for the form */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .form-container:hover {
+            transform: scale(1.02); /* Slightly enlarge on hover */
+        }
+        h2 {
+            color: #000; /* Black color for the heading */
+            margin-bottom: 20px;
+            font-size: 24px; /* Increased font size */
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333; /* Dark gray color for labels */
+            font-size: 15px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px; /* Increased padding */
+            margin: 6px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px; /* More rounded corners */
+            background-color: #f9f9f9; /* Light gray input background */
+            font-size: 15px;
+            transition: border 0.3s;
+        }
+        input[type="text"]:focus, input[type="number"]:focus {
+            outline: none;
+            border: 2px solid #000; /* Thicker black border on focus */
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        button {
+            width: 48%;
+            padding: 10px; /* Increased padding */
+            font-size: 16px; /* Increased font size */
+            color: #fff;
+            background-color: #000; /* Black background for buttons */
+            border: none;
+            border-radius: 8px; /* More rounded corners */
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s; /* Added transform transition */
+        }
+        button:hover {
+            background-color: #333; /* Dark gray on hover */
+            transform: translateY(-2px); /* Slight lift effect on hover */
+        }
+        #total, #percentage {
+            margin-top: 15px;
+            font-size: 18px; /* Increased font size */
+            font-weight: bold;
+            color: #000; /* Black color for results */
+            border-top: 1px solid #ddd; /* Top border for separation */
+            padding-top: 10px; /* Padding for spacing */
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Student Scorecard</h2>
+    
+    <label>Roll No:</label>
+    <input type="text" id="rollNo" required>
+
+    <label>Name:</label>
+    <input type="text" id="name" required>
+
+    <label>Class:</label>
+    <input type="text" id="class" required>
+
+    <label>Subject 1 Marks:</label>
+    <input type="number" id="subject1" min="0" max="100" required>
+
+    <label>Subject 2 Marks:</label>
+    <input type="number" id="subject2" min="0" max="100" required>
+
+    <label>Subject 3 Marks:</label>
+    <input type="number" id="subject3" min="0" max="100" required>
+
+    <label>Subject 4 Marks:</label>
+    <input type="number" id="subject4" min="0" max="100" required>
+
+    <label>Subject 5 Marks:</label>
+    <input type="number" id="subject5" min="0" max="100" required>
+
+    <div class="buttons">
+        <button onclick="totalMarks()">Calculate Total</button>
+        <button onclick="percentageScore()">Calculate Percentage</button>
+    </div>
+
+    <div id="total"></div>
+    <div id="percentage"></div>
+</div>
+
+<script>
+    function totalMarks() {
+        let subject1 = parseFloat(document.getElementById("subject1").value) || 0;
+        let subject2 = parseFloat(document.getElementById("subject2").value) || 0;
+        let subject3 = parseFloat(document.getElementById("subject3").value) || 0;
+        let subject4 = parseFloat(document.getElementById("subject4").value) || 0;
+        let subject5 = parseFloat(document.getElementById("subject5").value) || 0;
+        
+        let total = subject1 + subject2 + subject3 + subject4 + subject5;
+        document.getElementById("total").innerText = "Total Marks: " + total;
+    }
+
+    function percentageScore() {
+        let subject1 = parseFloat(document.getElementById("subject1").value) || 0;
+        let subject2 = parseFloat(document.getElementById("subject2").value) || 0;
+        let subject3 = parseFloat(document.getElementById("subject3").value) || 0;
+        let subject4 = parseFloat(document.getElementById("subject4").value) || 0;
+        let subject5 = parseFloat(document.getElementById("subject5").value) || 0;
+        
+        let total = subject1 + subject2 + subject3 + subject4 + subject5;
+        let percentage = (total / 500) * 100;
+        document.getElementById("percentage").innerText = "Percentage: " + percentage.toFixed(2) + "%";
+    }
+</script>
+
+</body>
+</html>
+
+

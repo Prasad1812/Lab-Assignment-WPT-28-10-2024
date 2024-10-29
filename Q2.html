@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f4f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+        .feedback-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #5a67d8;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .feedback-button:hover {
+            background-color: #434190;
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center; /* Center the modal */
+            align-items: center; /* Center the modal */
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: auto; /* Center horizontally */
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.5s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        h2 {
+            margin: 0 0 20px;
+            color: #333;
+            text-align: center;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 2px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #5a67d8;
+            outline: none;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #5a67d8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button[type="submit"]:hover {
+            background-color: #434190;
+        }
+    </style>
+</head>
+<body>
+
+<button class="feedback-button" onclick="openModal()">Feedback</button>
+
+<div id="feedbackModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>We Value Your Feedback</h2>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <textarea id="comments" placeholder="Your Comments" rows="4" required></textarea>
+        <button type="submit" onclick="submitFeedback()">Submit</button>
+    </div>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById("feedbackModal").style.display = "flex"; 
+    }
+
+    function closeModal() {
+        document.getElementById("feedbackModal").style.display = "none";
+    }
+
+    function submitFeedback() {
+        const name = document.getElementById("name").value;
+        const comments = document.getElementById("comments").value;
+
+        if (name && comments) {
+            alert("Thank you for your feedback, " + name + "!");
+            document.getElementById("name").value = "";
+            document.getElementById("comments").value = "";
+            closeModal();
+        } else {
+            alert("Please fill in all fields.");
+        }
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById("feedbackModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>
